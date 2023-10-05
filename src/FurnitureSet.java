@@ -1,4 +1,4 @@
-class FurnitureFactory {
+class FurnitureSet {
     private Furniture chair;
     private Furniture sofa;
     private Furniture coffeeTable;

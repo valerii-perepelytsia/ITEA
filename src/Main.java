@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        FurnitureFactory factory = new FurnitureFactory();
+        FurnitureSet factory = new FurnitureSet();
 
         factory.setChair(new Chair("Тиха гавань", 2340.0));
         factory.setSofa(new Sofa("Мудрість віків", 7340.57));
@@ -38,19 +38,19 @@ public class Main {
         }
     }
 
-    private static void setFurnitureForArtDeco(FurnitureFactory factory) {
+    private static void setFurnitureForArtDeco(FurnitureSet factory) {
         factory.setChair(new Chair("Тиха гавань", 2340.0));
         factory.setSofa(new Sofa("Мудрість віків", 7340.57));
         factory.setCoffeeTable(new CoffeeTable("Місце роздумів", 4340.0));
     }
 
-    private static void setFurnitureForVictorian(FurnitureFactory factory) {
+    private static void setFurnitureForVictorian(FurnitureSet factory) {
         factory.setChair(new NullFurniture());
         factory.setSofa(new NullFurniture());
         factory.setCoffeeTable(new NullFurniture());
     }
 
-    private static void setFurnitureForModern(FurnitureFactory factory) {
+    private static void setFurnitureForModern(FurnitureSet factory) {
         factory.setChair(new Chair("Сучасне крісло", 2000.0));
         factory.setSofa(new Sofa("Модерний диван", 5000.0));
         factory.setCoffeeTable(new CoffeeTable("Сучасний столик", 3000.0));
