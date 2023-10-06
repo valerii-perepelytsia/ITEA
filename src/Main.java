@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        Car ford = new Car("Ford", 150.0, 200, 25000.0, 1967);
-        Car mitsubishi = new Car("Mitsubishi", 180.5, 280, 32000.0, 1967);
-        Car toyota = new Car("Toyota", 120.0, 220, 21000.0, 1967);
-        Car kia = new Car("KIA", 200.0, 189, 3458.90, 1967);
+        Car ford = new Ford("Ford", 150.0, 300, 25000.0);
+        Car mitsubishi = new Mitsubishi("Mitsubishi", 180.0, 280, 30000.0);
+        Car toyota = new Toyota("Toyota", 120.0, 200, 20000.0);
+        Car kia = new KIA("KIA Rio", 600.0, 189, 3458.90);
 
         CarInfo carInfo = new CarInfo();
         carInfo.addCar(ford);
@@ -11,17 +11,15 @@ public class Main {
         carInfo.addCar(toyota);
         carInfo.addCar(kia);
 
-        Car fastestCar = carInfo.getFastestCar();
         Car mostExpensiveCar = carInfo.getMostExpensiveCar();
+        Car fastestCar = carInfo.getFastestCar();
         Car mostPowerfulCar = carInfo.getMostPowerfulCar();
 
-        System.out.println("Fastest Car:");
-        carInfo.printCarInfo(fastestCar);
-
-        System.out.println("\nMost Expensive Car:");
+        System.out.println("Найдорожча машина:");
         carInfo.printCarInfo(mostExpensiveCar);
-
-        System.out.println("\nMost Powerful Car:");
+        System.out.println("\nНайшвидша машина:");
+        carInfo.printCarInfo(fastestCar);
+        System.out.println("\nНайпотужніша машина:");
         carInfo.printCarInfo(mostPowerfulCar);
     }
 }

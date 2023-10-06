@@ -1,16 +1,33 @@
-class Car {
+public abstract class Car {
     private String model;
     private double power;
     private int speed;
     private double price;
-    private int yearOfManufacture;
+    private final int yearOfManufacture = 1967;
 
-    public Car(String model, double power, int speed, double price, int yearOfManufacture) {
+    public Car(String model, double power, int speed, double price) {
         this.model = model;
-        this.power = Math.min(Math.max(power, 0.0), 200.0);
-        this.speed = Math.min(Math.max(speed, 0), 320);
-        this.price = Math.min(Math.max(price, 0.0), 50000.0);
-        this.yearOfManufacture = yearOfManufacture;
+        if (power < 0.0) {
+            this.power = 0.0;
+        } else if (power > 200.0) {
+            this.power = 200.0;
+        } else {
+            this.power = power;
+        }
+        if (speed < 0) {
+            this.speed = 0;
+        } else if (speed > 320) {
+            this.speed = 320;
+        } else {
+            this.speed = speed;
+        }
+        if (price < 0.0) {
+            this.price = 0.0;
+        } else if (price > 50000.0) {
+            this.price = 50000.0;
+        } else {
+            this.price = price;
+        }
     }
 
     public String getModel() {

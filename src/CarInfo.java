@@ -1,47 +1,42 @@
-class CarInfo {
-    private Car[] cars;
-    private int carCount;
-
-    public CarInfo() {
-        cars = new Car[4];
-        carCount = 0;
-    }
+public class CarInfo {
+    private Car[] carArray = new Car[4];
+    private int carCount = 0;
 
     public void addCar(Car car) {
-        if (carCount < cars.length) {
-            cars[carCount] = car;
+        if (carCount < 4) {
+            carArray[carCount] = car;
             carCount++;
         }
     }
 
-    public Car getFastestCar() {
-        Car fastestCar = cars[0];
+    public Car getMostExpensiveCar() {
+        Car mostExpensive = carArray[0];
         for (int i = 1; i < carCount; i++) {
-            if (cars[i].getSpeed() > fastestCar.getSpeed()) {
-                fastestCar = cars[i];
+            if (carArray[i].getPrice() > mostExpensive.getPrice()) {
+                mostExpensive = carArray[i];
             }
         }
-        return fastestCar;
+        return mostExpensive;
     }
 
-    public Car getMostExpensiveCar() {
-        Car mostExpensiveCar = cars[0];
+    public Car getFastestCar() {
+        Car fastest = carArray[0];
         for (int i = 1; i < carCount; i++) {
-            if (cars[i].getPrice() > mostExpensiveCar.getPrice()) {
-                mostExpensiveCar = cars[i];
+            if (carArray[i].getSpeed() > fastest.getSpeed()) {
+                fastest = carArray[i];
             }
         }
-        return mostExpensiveCar;
+        return fastest;
     }
 
     public Car getMostPowerfulCar() {
-        Car mostPowerfulCar = cars[0];
+        Car mostPowerful = carArray[0];
         for (int i = 1; i < carCount; i++) {
-            if (cars[i].getPower() > mostPowerfulCar.getPower()) {
-                mostPowerfulCar = cars[i];
+            if (carArray[i].getPower() > mostPowerful.getPower()) {
+                mostPowerful = carArray[i];
             }
         }
-        return mostPowerfulCar;
+        return mostPowerful;
     }
 
     public void printCarInfo(Car car) {
