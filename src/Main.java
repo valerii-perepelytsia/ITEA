@@ -16,7 +16,7 @@ public class Main {
             System.out.println("------------------");
             System.out.print("Ви обрали варіант: ");
             choice = scanner.nextInt();
-
+            // Додаємо нові варіанти меблів
             switch (choice) {
                 case 1:
                     factory.produceFurnitureSet("Ар-деко");
