@@ -1,47 +1,39 @@
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Worker> workers = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Введіть дані працівника " + (i + 1) + ":");
-            System.out.print("Прізвище та ініціали: ");
-            String fullName = scanner.next();
-            scanner.nextLine();
+        Worker[] workers = new Worker[5];
 
-            System.out.print("Назва посади: ");
-            String jobTitle = scanner.nextLine();
-
-            int startYear = 0;
-            boolean validInput = false;
-
-            while (!validInput) {
+        for (int i = 0; i < workers.length; i++) {
+            try {
+                System.out.println("Введіть дані для працівника " + (i + 1) + ":");
+                System.out.print("Прізвище та ініціали: ");
+                String fullName = scanner.next();
+                System.out.print("Назва посади: ");
+                String jobTitle = scanner.next();
                 System.out.print("Рік надходження на роботу: ");
-                if (scanner.hasNextInt()) {
-                    startYear = scanner.nextInt();
-                    validInput = true;
-                } else {
-                    System.out.println("Помилка! Введено не коректний рік.");
-                    scanner.next();
-                }
-            }
+                int hireYear = scanner.nextInt();
 
-            workers.add(new Worker(fullName, jobTitle, startYear));
+                workers[i] = new Worker(fullName, jobTitle, hireYear);
+            } catch (InputMismatchException e) {
+                System.out.println("Помилка: Введено некоректний формат року.");
+                return;
+            }
         }
 
-        workers.sort(new WorkerComparator());
+        Arrays.sort(workers);
 
-        System.out.print("Введіть рік стажу: ");
-        int requiredYear = scanner.nextInt();
+        System.out.print("Введіть рік для пошуку працівників з більшим стажем: ");
+        int searchYear = scanner.nextInt();
 
-        System.out.println("Список працівників із стажем більше " + requiredYear + " років:");
-
+        System.out.println("Прізвища працівників зі стажем більше " + searchYear + ":");
         for (Worker worker : workers) {
-            if (2023 - worker.getStartYear() > requiredYear) {
-                System.out.println(worker.getFullName());
+            if (worker.getHireYear() > searchYear) {
+                System.out.println(worker.getFullName() + " (Стаж: " + (2023 - worker.getHireYear()) + " роки)");
             }
         }
     }
