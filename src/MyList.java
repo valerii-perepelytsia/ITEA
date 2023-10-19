@@ -1,25 +1,35 @@
-import java.util.ArrayList;
-
 public class MyList<T> {
-    private ArrayList<T> list;
+    private Object[] elements;
+    private int size;
 
     public MyList() {
-        list = new ArrayList<>();
+        elements = new Object[10];
+        size = 0;
     }
 
     public void add(T item) {
-        list.add(item);
+        if (size == elements.length) {
+            int newCapacity = elements.length * 2;
+            Object[] newElements = new Object[newCapacity];
+            for (int i = 0; i < size; i++) {
+                newElements[i] = elements[i];
+            }
+            elements = newElements;
+        }
+
+        elements[size] = item;
+        size++;
     }
 
     public T get(int index) {
-        if (index >= 0 && index < list.size()) {
-            return list.get(index);
+        if (index >= 0 && index < size) {
+            return (T) elements[index];
         } else {
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
     }
 
-    public final int size() {
-        return list.size();
+    public int size() {
+        return size;
     }
 }
