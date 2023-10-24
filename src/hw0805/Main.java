@@ -17,18 +17,6 @@ public class Main {
         String city = scanner.nextLine();
 
         String family = cityToFamilyMap.get(city);
-
-        if (family != null) {
-            System.out.println(family);
-
-            System.out.println("Видалити цей запис? (Так/Ні):");
-            String deleteChoice = scanner.nextLine();
-            if (deleteChoice.equalsIgnoreCase("Так")) {
-                cityToFamilyMap.remove(city);
-                System.out.println("Запис видалено.");
-            }
-        } else {
-            System.out.println("Місто не знайдено у списку.");
-        }
+        System.out.println(family);
     }
 }
