@@ -14,6 +14,8 @@ public class Main {
         myList.add("6");
         myList.add("7");
         myList.add("8");
+        myList.add("9");
+        myList.add("10");
 
         Iterator<String> iterator = myList.iterator();
         while (iterator.hasNext()) {
