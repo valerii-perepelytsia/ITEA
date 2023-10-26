@@ -26,7 +26,7 @@ public class Main {
     }
 
     public static int getMinimum(LinkedList<Integer> list) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(list);
-        return minHeap.peek();
+        PriorityQueue<Integer> minHead = new PriorityQueue<>(list);
+        return minHead.peek();
     }
 }
