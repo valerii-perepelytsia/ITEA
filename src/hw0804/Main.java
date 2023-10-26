@@ -1,6 +1,7 @@
 package hw0804;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
         int N = 10;
         LinkedList<Integer> list = getIntegerList(N);
         System.out.println("Список: " + list);
+
         int min = getMinimum(list);
         System.out.println("Мінімальне число: " + min);
     }
@@ -19,17 +21,12 @@ public class Main {
         for (int i = 0; i < N; i++) {
             list.add(rand.nextInt(100));
         }
+
         return list;
     }
 
     public static int getMinimum(LinkedList<Integer> list) {
-        int min = Integer.MAX_VALUE;
-
-        for (int num : list) {
-            if (num < min) {
-                min = num;
-            }
-        }
-        return min;
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(list);
+        return minHeap.peek();
     }
 }
