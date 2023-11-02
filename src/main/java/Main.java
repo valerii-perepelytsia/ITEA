@@ -13,14 +13,7 @@ public class Main {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] words = line.split("\\s+");
-                for (int i = 0; i < words.length; i++) {
-                    String word = words[i];
-                    if (isPreposition(word)) {
-                        words[i] = "Java";
-                    }
-                }
-                String replacedLine = String.join(" ", words);
+                String replacedLine = replacePrepositions(line);
                 writer.write(replacedLine);
                 writer.newLine();
             }
@@ -28,19 +21,18 @@ public class Main {
             reader.close();
             writer.close();
 
+            System.out.println("Операція завершена. Прийменники замінено на 'Java' у файлі output.txt.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static boolean isPreposition(String word) {
+    private static String replacePrepositions(String line) {
         String[] prepositions = {"в", "на", "під", "перед", "за", "після", "над", "після", "серед", "між", "через",
-                "поза", "біля", "о", "від", "при", "крізь", "навколо", "окрім"};
+                "поза", "біля", "о", "від", "при", "крізь", "вузько", "навколо", "окрім"};
         for (String preposition : prepositions) {
-            if (word.equalsIgnoreCase(preposition)) {
-                return true;
-            }
+            line = line.replaceAll("\\b" + preposition + "\\b", "Java");
         }
-        return false;
+        return line;
     }
 }
