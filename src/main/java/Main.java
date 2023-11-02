@@ -21,7 +21,6 @@ public class Main {
             reader.close();
             writer.close();
 
-            System.out.println("Операція завершена. Прийменники замінено на 'Java' у файлі output.txt.");
         } catch (IOException e) {
             e.printStackTrace();
         }
