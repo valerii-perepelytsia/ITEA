@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введіть повне ім'я класу (з пакетом): ");
+        System.out.print("Введіть ім'я класу: ");
         String className = scanner.nextLine();
 
         try {
