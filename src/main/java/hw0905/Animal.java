@@ -10,7 +10,6 @@ public class Animal {
     private static String privateStaticField;
     private static final String privateStaticFinalField = "test private static final field";
 
-    // Конструктор
     public Animal(String privateField, String publicField, String protectedField, String publicStaticField, String privateStaticField) {
         this.privateField = privateField;
         this.publicField = publicField;
