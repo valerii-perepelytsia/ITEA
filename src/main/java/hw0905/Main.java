@@ -4,7 +4,9 @@ import java.lang.reflect.Field;
 
 public class Main {
     public static void main(String[] args) {
-        Cat cat = new Cat("Private Value", "Public Value", "Protected Value", "Public Static Value", "Private Static Value");
+        Cat cat = new Cat("Test Private Value", "Test Public Value",
+                "Test Protected Value", "Test Public Static Value",
+                "Test Private Static Value");
 
         Class<?> animalClass = Animal.class;
         try {
@@ -23,10 +25,10 @@ public class Main {
             privateStaticField.setAccessible(true);
             privateStaticFinalField.setAccessible(true);
 
-            privateField.set(cat, "New Private Value");
-            publicField.set(cat, "New Public Value");
-            protectedField.set(cat, "New Protected Value");
-            privateStaticField.set(null, "New Private Static Value");
+            privateField.set(cat, "New Test Private Value");
+            publicField.set(cat, "New Test Public Value");
+            protectedField.set(cat, "New Test Protected Value");
+            privateStaticField.set(null, "New Test Private Static Value");
 
             System.out.println("Private Field: " + privateField.get(cat));
             System.out.println("Public Field: " + publicField.get(cat));
