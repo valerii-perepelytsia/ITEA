@@ -1,6 +1,5 @@
-package calculator;
+package hw1001;
 
-import java.lang.annotation.*;
 
 /**
  * Клас для виконання математичних операцій.
