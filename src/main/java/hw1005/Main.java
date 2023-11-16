@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person("John", 30);
+        Person person = new Person("Валерій - тест", 33);
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.ser"))) {
             oos.writeObject(person);
