@@ -2,20 +2,31 @@ package hw1002;
 
 public class Main {
     public static void main(String[] args) {
-        Class<ChildClass> childClass = ChildClass.class;
+        Cat cat = new Cat();
 
-        MyInheritedAnnotation inheritedAnnotation = childClass.getAnnotation(MyInheritedAnnotation.class);
+        cat.makeSound();
 
-        if (inheritedAnnotation != null) {
-            System.out.println("Inherited Annotation: " + inheritedAnnotation.value());
-        } else {
-            System.out.println("No Inherited Annotation");
-        }
+        MyAnnotation annotation = Cat.class.getAnnotation(MyAnnotation.class);
+        System.out.println("Annotation value: " + annotation.value());
 
-        ChildClass child = new ChildClass();
+        DeprecatedExample deprecatedExample = new DeprecatedExample();
+        deprecatedExample.oldMethod();
 
-        child.deprecatedMethod();
+        SuppressWarningsExample suppressWarningsExample = new SuppressWarningsExample();
+        suppressWarningsExample.getStrings();
 
-        System.out.println(child);
+        SafeVarargsExample safeVarargsExample = new SafeVarargsExample();
+        safeVarargsExample.process("Item1", "Item2");
+
+        OverrideExample overrideExample = new OverrideExample();
+        OverrideExample.Cat catFromOverrideExample = overrideExample.new Cat();
+        catFromOverrideExample.makeSound();
+
+        methodWithCustomAnnotation();
+    }
+
+    @CustomAnnotation(value = "Custom annotation on method")
+    public static void methodWithCustomAnnotation() {
+        System.out.println("Method with custom annotation");
     }
 }
