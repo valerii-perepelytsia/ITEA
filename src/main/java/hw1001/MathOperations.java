@@ -1,71 +1,63 @@
 package hw1001;
 
+import java.lang.reflect.Method;
+
 /**
  * Клас для виконання математичних операцій.
  */
 public class MathOperations {
-    /**
-     * Змінна для зберігання поточного результату.
-     */
     private double result;
 
-    /**
-     * Конструктор за замовчуванням, що встановлює початковий результат на 0.
-     */
     public MathOperations() {
         this.result = 0;
     }
 
-    /**
-     * Метод для виконання операції додавання.
-     *
-     * @param value Значення для додавання
-     */
-    @Operation(operation = "Додавання", value = 0)
+    public void performOperations() {
+        Class<? extends MathOperations> clazz = this.getClass();
+        Method[] methods = clazz.getDeclaredMethods();
+
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(Operation.class)) {
+                Operation operation = method.getAnnotation(Operation.class);
+                String operationName = operation.operation();
+                double value = operation.value();
+
+                System.out.println("Виконується операція: " + operationName + " зі значенням: " + value);
+
+                try {
+                    method.invoke(this, value);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    @Operation(operation = "Додавання", value = 5)
     public void add(double value) {
         result += value;
     }
 
-    /**
-     * Метод для виконання операції віднімання.
-     *
-     * @param value Значення для віднімання
-     */
-    @Operation(operation = "Віднімання", value = 0)
+    @Operation(operation = "Віднімання", value = 3)
     public void subtract(double value) {
         result -= value;
     }
 
-    /**
-     * Метод для виконання операції множення.
-     *
-     * @param value Значення для множення
-     */
-    @Operation(operation = "Множення", value = 1)
+    @Operation(operation = "Множення", value = 2)
     public void multiply(double value) {
         result *= value;
     }
 
-    /**
-     * Метод для виконання операції ділення.
-     *
-     * @param value Значення для ділення
-     */
-    @Operation(operation = "Ділення", value = 1)
+    @Operation(operation = "Ділення", value = 4)
     public void divide(double value) {
         if (value != 0) {
             result /= value;
         } else {
             System.out.println("Помилка: Ділення на нуль.");
         }
-    }
-
-    /**
-     * Метод для отримання поточного результату.
-     *
-     * @return Поточний результат
-     */
-    public double getResult() {
-        return result;
     }
 }
