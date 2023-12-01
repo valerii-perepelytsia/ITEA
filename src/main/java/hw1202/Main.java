@@ -2,17 +2,16 @@ package hw1202;
 
 public class Main {
     public static void main(String[] args) {
-        Book book = new Book("Test title", "Test Author", 2023);
+        Book book = new Book("Test title", "Test Test", 2023);
 
-        Runnable anonymousClass = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Anonymous class: " + book.getTitle());
-            }
+        String testClosureInfo = "test string";
+        Runnable lambdaClosure = () -> {
+            System.out.println("Lambda closure: "
+                    + book.getTitle() + ", "
+                    + book.getAuthor() + ", "
+                    + book.getYear() + ", "
+                    + testClosureInfo);
         };
-        anonymousClass.run();
-
-        Runnable lambdaExpression = () -> System.out.println("Lambda expression: " + book.getAuthor());
-        lambdaExpression.run();
+        lambdaClosure.run();
     }
 }
